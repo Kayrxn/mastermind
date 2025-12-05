@@ -1,7 +1,7 @@
-from src.generar_codigo_secreto import *
+from src.generar_codigo_secreto import generar_codigo
+from src.constantes import colores, longitud_codigo
 
-def test_generar_codigo_secreto():
-    assert len(generar_codigo_secreto()) == longitud_codigo
-    assert all(color in colores for color in generar_codigo_secreto())
-
-print("Todas las pruebas pasaron correctamente.") 
+def test_generar_codigo_valido():
+    codigo = generar_codigo()
+    assert len(codigo) == longitud_codigo
+    assert all(color in colores for color in codigo)
