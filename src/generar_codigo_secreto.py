@@ -1,11 +1,5 @@
 import random
+from src.constantes import colores, longitud_codigo
 
-colores = ["rojo", "verde", "azul", "amarillo", "blanco", "negro", "rosa", "marrón"]
-longitud_codigo = 4
-
-def generar_codigo_secreto():
-    codigo = []
-    for _ in range(longitud_codigo):
-        color_aleatorio = random.choice(colores)
-        codigo.append(color_aleatorio)
-    return codigo
+def generar_codigo():
+    return [random.choice(colores) for _ in range(longitud_codigo)]  #escoge un color aleatorio de los disponibles, y lo mete en una lista (x4)
