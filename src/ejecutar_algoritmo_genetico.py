@@ -1,5 +1,5 @@
 from src.fitness import fitness
-from src.seleccion import seleccion
+from src.seleccion import seleccion_individuos
 from src.crear_poblacion import crear_poblacion
 from src.generar_nueva_poblacion import generar_nueva_poblacion
 
@@ -30,7 +30,7 @@ def ejecutar_algoritmo_genetico(codigo_secreto, poblacion=None, max_generaciones
             return mejor_individuo, generacion
 
         #seleccionar padres y generar la nueva población
-        padres = seleccion(poblacion, codigo_secreto)
+        padres = seleccion_individuos(poblacion, codigo_secreto)
         nueva_poblacion = generar_nueva_poblacion(padres)
         poblacion = nueva_poblacion
 
