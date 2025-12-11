@@ -2,10 +2,20 @@ import random
 from src.constantes import colores, prob_mutacion
 
 def mutacion(individuo):
-    nuevo = individuo.copy()                                #copiamos el individuo para no modificar el original
+    nuevo = individuo.copy()
 
-    if random.random() < prob_mutacion:                     #si se cumple la probabilidad de mutacion
-        indice = random.randint(0, len(individuo) - 1)      #elegimos uno de los índices del individuo, desde 0 hasta 3 aleatoriamente (longitud es 4, menos uno porque ya contamos desde 0)
-        nuevo[indice] = random.choice(colores)              #cambiamos el color en ese indice por uno aleatorio
+    if random.random() < prob_mutacion:
+
+        indice = random.randint(0, len(individuo) - 1)
+        color_actual = nuevo[indice]
+
+        # crear lista de colores posibles excluyendo el actual
+        colores_posibles = []
+        for color in colores:
+            if color != color_actual:
+                colores_posibles.append(color)
+
+        # elegir uno distinto al actual
+        nuevo[indice] = random.choice(colores_posibles)
 
     return nuevo

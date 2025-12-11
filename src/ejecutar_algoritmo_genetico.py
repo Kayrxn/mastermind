@@ -2,8 +2,9 @@ from src.fitness import fitness
 from src.seleccion import seleccion_individuos
 from src.crear_poblacion import crear_poblacion
 from src.generar_nueva_poblacion import generar_nueva_poblacion
+from src.constantes import max_generaciones
 
-def ejecutar_algoritmo_genetico(codigo_secreto, poblacion=None, max_generaciones=50):
+def ejecutar_algoritmo_genetico(codigo_secreto, poblacion=None):
 
     #si no se pasa una población inicial, la creamos
     if poblacion is None:

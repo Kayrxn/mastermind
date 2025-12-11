@@ -6,13 +6,13 @@ def seleccion_individuos (poblacion, codigo_secreto):
     individuos_seleccionados = []
     
     for _ in range(len(poblacion) // 2):
-        primer_individuo, segundo_individuo = random.sample(poblacion, 2)
+        padre_a, padre_b = random.sample(poblacion, 2)
         
-        if fitness(primer_individuo, codigo_secreto) > fitness(segundo_individuo,codigo_secreto):
-            ganador = primer_individuo
+        if fitness(padre_a, codigo_secreto) > fitness(padre_b,codigo_secreto):
+            ganador = padre_a
         
         else:
-            ganador = segundo_individuo
+            ganador = padre_b
         
         individuos_seleccionados.append(ganador)
         
