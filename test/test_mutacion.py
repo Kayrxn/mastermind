@@ -1,6 +1,6 @@
-from src.mutacion import mutacion
+from src.mutacion import mutar
 
-def test_mutacion_devuelve_lista_mismo_tamano():
+def test_mutacion_mismo_tamano():
     ind = ["rojo", "verde", "azul", "amarillo"]
-    mutado = mutacion(ind)
-    assert len(mutado) == len(ind)
+    resultado = mutar(ind)
+    assert len(resultado) == len(ind)

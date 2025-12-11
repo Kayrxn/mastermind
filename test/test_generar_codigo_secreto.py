@@ -4,4 +4,5 @@ from src.constantes import colores, longitud_codigo
 def test_generar_codigo_valido():
     codigo = generar_codigo()
     assert len(codigo) == longitud_codigo
-    assert all(color in colores for color in codigo)
+    for color in codigo:
+        assert color in colores
