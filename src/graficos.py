@@ -1,134 +1,189 @@
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
-# Este módulo grafica la evolución del algoritmo genético para Mastermind.
+MAPA_COLORES = {
+    "rojo": "#c0392b",
+    "verde": "#27ae60",
+    "azul": "#2980b9",
+    "amarillo": "#f1c40f",
+    "blanco": "#ecf0f1",
+    "negro": "#2c3e50"
+}
 
-def graficar_evolucion(generaciones, fitness, negros, blancos):
-    """
-    Genera una gráfica de la evolución del algoritmo genético.
+COLOR_MADERA = "#b86b1f"
+COLOR_AGUJERO = "#c0b5ac"
+COLOR_PISTA_FONDO = "#8e6e53"
 
-    Parámetros:
-    - generaciones: lista de números de generación
-    - fitness: lista de fitness del mejor individuo por generación
-    - negros: lista de pistas negras por generación
-    - blancos: lista de pistas blancas por generación
-    """
 
-    fig, ax1 = plt.subplots()
+def graficar_tablero(intentos, pistas, codigo_secreto):
+    total_filas = 14
+    columnas = len(codigo_secreto)
 
-    # Gráfica de fitness
-    ax1.plot(generaciones, fitness, marker='o')
-    ax1.set_xlabel("Generación")
-    ax1.set_ylabel("Fitness (mejor individuo)")
+    fig, ax = plt.subplots(figsize=(6, 11))
+    fig.patch.set_facecolor("black")
 
-    # Segundo eje para negros y blancos
-    ax2 = ax1.twinx()
-    ax2.plot(generaciones, negros, linestyle='--', marker='s')
-    ax2.plot(generaciones, blancos, linestyle=':', marker='^')
-    ax2.set_ylabel("Pistas (negras / blancas)")
+    # Fondo tablero
+    tablero = patches.FancyBboxPatch(
+        (0, 0), 7, total_filas + 3,
+        boxstyle="round,pad=0.3,rounding_size=0.6",
+        facecolor=COLOR_MADERA,
+        edgecolor="none"
+    )
+    ax.add_patch(tablero)
 
-    plt.title("Evolución del Algoritmo Genético en Mastermind")
-    plt.grid(True)
+    # Posiciones base
+    x_numero = 0.6
+    x_pistas = 1.4
+    x_fichas = 3.0
+
+    # ================================
+    # DIBUJAR FILAS (ARRIBA → ABAJO)
+    # ================================
+    for fila in range(total_filas):
+        y = total_filas - fila + 1
+
+        # Número de intento
+        ax.text(
+            x_numero, y,
+            f"{fila + 1}",
+            ha="center",
+            va="center",
+            fontsize=9,
+            color="white",
+            weight="bold"
+        )
+
+        # Agujeros fichas
+        for col in range(columnas):
+            agujero = plt.Circle(
+                (x_fichas + col * 0.8, y),
+                0.28,
+                color=COLOR_AGUJERO,
+                ec="black",
+                lw=1
+            )
+            ax.add_patch(agujero)
+
+        # Agujeros pistas
+        for i in range(4):
+            px = x_pistas + (i % 2) * 0.35
+            py = y + (0.18 if i < 2 else -0.18)
+            pista = plt.Circle(
+                (px, py),
+                0.1,
+                color=COLOR_PISTA_FONDO,
+                ec="black",
+                lw=0.8
+            )
+            ax.add_patch(pista)
+
+        # Intentos reales (de arriba hacia abajo)
+        if fila < len(intentos):
+            intento = intentos[fila]
+            negros, blancos = pistas[fila]
+
+            # Fichas
+            for col, color in enumerate(intento):
+                ficha = plt.Circle(
+                    (x_fichas + col * 0.8, y),
+                    0.28,
+                    color=MAPA_COLORES[color],
+                    ec="black",
+                    lw=1.2
+                )
+                ax.add_patch(ficha)
+
+            # Pistas negras/blancas
+            k = 0
+            for _ in range(negros):
+                px = x_pistas + (k % 2) * 0.35
+                py = y + (0.18 if k < 2 else -0.18)
+                pista = plt.Circle((px, py), 0.1, color="black")
+                ax.add_patch(pista)
+                k += 1
+
+            for _ in range(blancos):
+                px = x_pistas + (k % 2) * 0.35
+                py = y + (0.18 if k < 2 else -0.18)
+                pista = plt.Circle((px, py), 0.1, color="white", ec="black")
+                ax.add_patch(pista)
+                k += 1
+
+    # ================================
+    # CÓDIGO SECRETO (ABAJO)
+    # ================================
+    y_secreto = 1
+
+    for col, color in enumerate(codigo_secreto):
+        ficha = plt.Circle(
+            (x_fichas + col * 0.8, y_secreto),
+            0.3,
+            color=MAPA_COLORES[color],
+            ec="gold",
+            lw=2
+        )
+        ax.add_patch(ficha)
+
+    ax.text(
+        x_fichas - 1.1,
+        y_secreto,
+        "Código secreto",
+        ha="right",
+        va="center",
+        fontsize=10,
+        color="white",
+        weight="bold"
+    )
+
+
+    # ================================
+    # AJUSTES FINALES
+    # ================================
+    ax.set_xlim(0, 7)
+    ax.set_ylim(0, total_filas + 3)
+    ax.axis("off")
+
+    plt.title("Mastermind", color="white", fontsize=14, pad=10)
     plt.show()
 
-# ------------------------------------------------------------
-#  NUEVA FUNCIÓN: Graficar TABLERO estilo Mastermind
-# ------------------------------------------------------------
-
-import matplotlib.patches as patches
-import math
-
-def graficar_tablero(intentos, pistas, codigo_secreto=None):
+# ================================
+# EVOLUCIÓN DEL FITNESS
+# ================================
+def graficar_fitness_por_color(generaciones, fitness_colores):
     """
-    Dibuja un tablero estilo Mastermind con matplotlib.
-
-    Parámetros:
-    - intentos: lista de listas, cada intento es una combinación (por ejemplo ['R','G','B','Y'])
-    - pistas: lista de listas con símbolos o valores de pistas (ej: [(2,1), (1,2)] )
-    - codigo_secreto: lista opcional para mostrar al resolver
+    Muestra la evolución del fitness medio por color a lo largo
+    de las generaciones del algoritmo genético
     """
 
-    filas = len(intentos)
-    cols = len(intentos[0]) if intentos else 4
+    import matplotlib.pyplot as plt
 
-    fig, ax = plt.subplots(figsize=(6, filas * 0.7))
-    ax.set_xlim(0, cols + 3)
-    ax.set_ylim(0, filas + 1)
-    ax.set_aspect('equal')
-    ax.axis('off')
-
-    # Mapeo simple de colores
-    mapa_colores = {
-        'R': 'red',
-        'G': 'green',
-        'B': 'blue',
-        'Y': 'yellow',
-        'O': 'orange',
-        'P': 'purple'
+    colores_plot = {
+        "rojo": "#c0392b",
+        "verde": "#27ae60",
+        "azul": "#2980b9",
+        "amarillo": "#f1c40f",
+        "blanco": "#7f8c8d",
+        "negro": "#2c3e50"
     }
 
-    # Dibujar cada fila de intento
-    for i, intento in enumerate(intentos):
-        y = filas - i
+    plt.figure(figsize=(10, 6))
+    plt.gca().set_facecolor("#f4f4f4")
 
-        # Círculos de intento
-        for j, ficha in enumerate(intento):
-            color = mapa_colores.get(ficha, 'gray')
-            circ = patches.Circle((j + 1, y), 0.3, facecolor=color, edgecolor='black')
-            ax.add_patch(circ)
+    for color, valores in fitness_colores.items():
+        plt.plot(
+            generaciones,
+            valores,
+            marker="o",
+            linewidth=2,
+            label=color.capitalize(),
+            color=colores_plot[color]
+        )
 
-        # Pistas (negras y blancas)
-        negros, blancos = pistas[i]
-        x_pista = cols + 1
-
-        # Negros → círculo negro
-        for n in range(negros):
-            circ = patches.Circle((x_pista, y + 0.2 * (n - 1)), 0.15, facecolor='black', edgecolor='black')
-            ax.add_patch(circ)
-
-        # Blancos → círculo blanco
-        for b in range(blancos):
-            circ = patches.Circle((x_pista + 0.5, y + 0.2 * (b - 1)), 0.15, facecolor='white', edgecolor='black')
-            ax.add_patch(circ)
-
-    # Mostrar código secreto si se da
-    if codigo_secreto:
-        ax.text(0.5, 0.3, f"Código secreto: {codigo_secreto}", fontsize=12)
-
-    plt.title("Tablero Mastermind")
-    plt.show()
-
-
-
-# ------------------------------------------------------------
-#  NUEVA FUNCIÓN: Graficar evolución del fitness
-# ------------------------------------------------------------
-
-def graficar_evolucion(generaciones, fitness, negros, blancos):
-    """
-    Grafica la evolución del fitness y de las pistas negras/blancas
-    por generación.
-
-    generaciones: lista de números de generación
-    fitness: lista del mejor fitness por generación
-    negros: lista de negros por generación
-    blancos: lista de blancos por generación
-    """
-
-    plt.figure(figsize=(8, 5))
-    plt.plot(generaciones, fitness, marker='o')
-    plt.title("Evolución del Fitness del Algoritmo Genético")
+    plt.title("Evolución del Fitness Medio por Color", fontsize=14)
     plt.xlabel("Generación")
-    plt.ylabel("Fitness")
-    plt.grid(True)
+    plt.ylabel("Fitness medio de la población")
+    plt.xticks(generaciones)
+    plt.grid(True, alpha=0.3)
+    plt.legend(title="Colores")
+    plt.tight_layout()
     plt.show()
-
-    # Gráfica de pistas
-    plt.figure(figsize=(8, 5))
-    plt.plot(generaciones, negros, marker='s')
-    plt.plot(generaciones, blancos, marker='^')
-    plt.title("Evolución de Pistas: Negros y Blancos")
-    plt.xlabel("Generación")
-    plt.ylabel("Cantidad de pistas")
-    plt.grid(True)
-    plt.show()
-

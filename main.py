@@ -6,10 +6,25 @@ from src.seleccion_padres import seleccionar_padres
 from src.nueva_generacion import crear_nueva_generacion
 
 # -------------------- IMPORTAR FUNCIONES DE MATPLOTLIB --------------------
-from src.graficos import graficar_tablero, graficar_evolucion
+from src.graficos import graficar_tablero, graficar_fitness_por_color
 import matplotlib
 matplotlib.use("TkAgg")  # Forzar backend que abre ventana de gráficos
 # -------------------------------------------------------------------------
+
+def fitness_por_color(poblacion, codigo_secreto):
+    colores = ["rojo", "verde", "azul", "amarillo", "blanco", "negro"]
+    conteo = {color: [] for color in colores}
+
+    for individuo in poblacion:
+        fit, _, _ = calcular_fitness(individuo, codigo_secreto)
+        for color in set(individuo):
+            conteo[color].append(fit)
+
+    return {
+        color: (sum(valores) / len(valores) if valores else 0)
+        for color, valores in conteo.items()
+    }
+
 
 def main():
 
@@ -22,9 +37,15 @@ def main():
     lista_intentos = []
     lista_pistas = []
     generaciones = []
-    fitness_generacion = []
-    negros_generacion = []
-    blancos_generacion = []
+    fitness_colores = {
+        "rojo": [],
+        "verde": [],
+        "azul": [],
+        "amarillo": [],
+        "blanco": [],
+        "negro": []
+    }
+
     # -----------------------------------------------------------------
 
     generacion = 1
@@ -49,9 +70,11 @@ def main():
         lista_intentos.append(mejor)
         lista_pistas.append((negros, blancos))
         generaciones.append(generacion)
-        fitness_generacion.append(mejor_fitness)
-        negros_generacion.append(negros)
-        blancos_generacion.append(blancos)
+
+        # Matplotlib grafica fitness
+        fitness_gen = fitness_por_color(poblacion, codigo_secreto)
+        for color in fitness_colores:
+            fitness_colores[color].append(fitness_gen[color])
         # ------------------------------------------------------------------------
 
         if mejor == codigo_secreto:
@@ -67,7 +90,7 @@ def main():
 
     # -------------------- LLAMADAS A MATPLOTLIB AL FINAL --------------------
     graficar_tablero(lista_intentos, lista_pistas, codigo_secreto)
-    graficar_evolucion(generaciones, fitness_generacion, negros_generacion, blancos_generacion)
+    graficar_fitness_por_color(generaciones, fitness_colores)
     # ------------------------------------------------------------------------
 
 if __name__ == "__main__":
