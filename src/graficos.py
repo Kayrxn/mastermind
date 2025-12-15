@@ -10,7 +10,7 @@ MAPA_COLORES = {
     "negro": "#2c3e50"
 }
 
-COLOR_MADERA = "#b86b1f"
+COLOR_FONDO_TABLERO = "#f5c08bff"
 COLOR_AGUJERO = "#c0b5ac"
 COLOR_PISTA_FONDO = "#8e6e53"
 
@@ -26,7 +26,7 @@ def graficar_tablero(intentos, pistas, codigo_secreto):
     tablero = patches.FancyBboxPatch(
         (0, 0), 7, total_filas + 3,
         boxstyle="round,pad=0.3,rounding_size=0.6",
-        facecolor=COLOR_MADERA,
+        facecolor=COLOR_FONDO_TABLERO,
         edgecolor="none"
     )
     ax.add_patch(tablero)
@@ -119,7 +119,7 @@ def graficar_tablero(intentos, pistas, codigo_secreto):
             (x_fichas + col * 0.8, y_secreto),
             0.3,
             color=MAPA_COLORES[color],
-            ec="gold",
+            ec="black",
             lw=2
         )
         ax.add_patch(ficha)
@@ -149,41 +149,57 @@ def graficar_tablero(intentos, pistas, codigo_secreto):
 # ================================
 # EVOLUCIÓN DEL FITNESS
 # ================================
-def graficar_fitness_por_color(generaciones, fitness_colores):
+
+def graficar_barras_fitness_por_generacion_y_color(generaciones, fitness_colores):
     """
-    Muestra la evolución del fitness medio por color a lo largo
-    de las generaciones del algoritmo genético
+    Gráfico de BARRAS agrupadas:
+    - Eje X: generaciones
+    - Eje Y: fitness TOTAL
+    - Cada color es una barra distinta por generación
     """
 
     import matplotlib.pyplot as plt
+    import numpy as np
 
     colores_plot = {
         "rojo": "#c0392b",
         "verde": "#27ae60",
         "azul": "#2980b9",
         "amarillo": "#f1c40f",
-        "blanco": "#7f8c8d",
+        "blanco": "#dee7e7",
         "negro": "#2c3e50"
     }
 
-    plt.figure(figsize=(10, 6))
-    plt.gca().set_facecolor("#f4f4f4")
+    colores = list(fitness_colores.keys())
+    n_colores = len(colores)
+    n_gen = len(generaciones)
 
-    for color, valores in fitness_colores.items():
-        plt.plot(
-            generaciones,
-            valores,
-            marker="o",
-            linewidth=2,
+    x = np.arange(n_gen)  # posiciones base
+    ancho = 0.12          # ancho de cada barra
+
+    plt.figure(figsize=(12, 6))
+    plt.gca().set_facecolor("#ecd2f0e1")
+
+    for i, color in enumerate(colores):
+        plt.bar(
+            x + i * ancho,
+            fitness_colores[color],
+            width=ancho,
+            color=colores_plot[color],
             label=color.capitalize(),
-            color=colores_plot[color]
+            edgecolor="black"
         )
 
-    plt.title("Evolución del Fitness Medio por Color", fontsize=14)
+    plt.xticks(
+        x + ancho * (n_colores - 1) / 2,
+        generaciones
+    )
+
     plt.xlabel("Generación")
-    plt.ylabel("Fitness medio de la población")
-    plt.xticks(generaciones)
-    plt.grid(True, alpha=0.3)
-    plt.legend(title="Colores")
+    plt.ylabel("Fitness total")
+    plt.title("Fitness Total por Color y Generación", fontsize=14)
+
+    plt.grid(axis="y", alpha=0.3)
+    plt.legend(title="Colores", ncol=3)
     plt.tight_layout()
     plt.show()

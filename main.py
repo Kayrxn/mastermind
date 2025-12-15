@@ -6,7 +6,7 @@ from src.seleccion_padres import seleccionar_padres
 from src.nueva_generacion import crear_nueva_generacion
 
 # -------------------- IMPORTAR FUNCIONES DE MATPLOTLIB --------------------
-from src.graficos import graficar_tablero, graficar_fitness_por_color
+from src.graficos import graficar_tablero, graficar_barras_fitness_por_generacion_y_color
 import matplotlib
 matplotlib.use("TkAgg")  # Forzar backend que abre ventana de gráficos
 # -------------------------------------------------------------------------
@@ -21,7 +21,7 @@ def fitness_por_color(poblacion, codigo_secreto):
             conteo[color].append(fit)
 
     return {
-        color: (sum(valores) / len(valores) if valores else 0)
+        color: sum(valores)
         for color, valores in conteo.items()
     }
 
@@ -90,7 +90,7 @@ def main():
 
     # -------------------- LLAMADAS A MATPLOTLIB AL FINAL --------------------
     graficar_tablero(lista_intentos, lista_pistas, codigo_secreto)
-    graficar_fitness_por_color(generaciones, fitness_colores)
+    graficar_barras_fitness_por_generacion_y_color(generaciones, fitness_colores)
     # ------------------------------------------------------------------------
 
 if __name__ == "__main__":
