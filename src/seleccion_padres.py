@@ -2,32 +2,26 @@ from src.fitness import calcular_fitness
 from src.constantes import TAMANIO_POBLACION
 
 def seleccionar_padres(poblacion, codigo_secreto):
-    #Paso 5: Selecciona el 80% superior por fitness, sin repetir padres.
+    # Paso 5: Selecciona el 80% superior por fitness, sin repetir padres.
 
-    resultados = []  #guardará tuplas (individuo, valor_fitness)
+    resultados = []  # guardará tuplas (individuo, valor_fitness)
     for individuo in poblacion:
         fit, _, _ = calcular_fitness(individuo, codigo_secreto)
         resultados.append([individuo, fit])
 
-    #ordenar manualmente por fitness
-    n = len(resultados)
-    for i in range(n - 1):
-        for j in range(0, n - i - 1):
-            if resultados[j][1] < resultados[j + 1][1]:
-                temp = resultados[j]
-                resultados[j] = resultados[j + 1]
-                resultados[j + 1] = temp
+    # Ordenar por fitness de mayor a menor
+    resultados_ordenados = sorted(resultados, key=lambda x: x[1], reverse=True)
 
-    numero_padres = int(TAMANIO_POBLACION * 0.8)
+    numero_padres = int(TAMANIO_POBLACION * 0.8) #seleccioona el 80% de 40 como numero_padres
     padres = []
     usados = []
 
-    indice = 0
-    while len(padres) < numero_padres and indice < len(resultados):
-        candidato = resultados[indice][0]
-        if candidato not in usados:
-            padres.append(candidato)
-            usados.append(candidato)
-        indice = indice + 1
+    for individuo, _ in resultados_ordenados:  #recorre los individuos en resultados_ordenados (ordenados por fitness)
+        if len(padres) >= numero_padres:  #si ya se han seleccionado suficientes padres, salir del bucle
+            break
+        if individuo not in usados:  #si el individuo no está ya en usados (para evitar duplicados)...
+            padres.append(individuo)  #añadir individuo a padres
+            usados.append(individuo)  #y a usados
 
     return padres
+

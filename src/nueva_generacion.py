@@ -4,7 +4,7 @@ from src.mutacion import mutar
 from src.constantes import TAMANIO_POBLACION
 from src.fitness import calcular_fitness
 
-def crear_nueva_generacion(padres, codigo_secreto):
+def crear_nueva_generacion(padres, codigo_secreto=None):
 
     #Paso 7: Población de la siguiente generación.
     nueva_poblacion = []
@@ -29,6 +29,8 @@ def crear_nueva_generacion(padres, codigo_secreto):
         nueva_poblacion.append(hijo1)
         nueva_poblacion.append(hijo2)
 
-    #ordenar por fitness descendente y retornar los 40 mejores
-    nueva_poblacion.sort(key=lambda x: calcular_fitness(x, codigo_secreto)[0], reverse=True)
-    return nueva_poblacion[:TAMANIO_POBLACION]  #retornar los 40 individuos con mayor fitness
+    #Si se proporcionó el código secreto, ordenar por fitness descendente
+    if codigo_secreto is not None:
+        nueva_poblacion.sort(key=lambda x: calcular_fitness(x, codigo_secreto)[0], reverse=True)
+
+    return nueva_poblacion[:TAMANIO_POBLACION]
