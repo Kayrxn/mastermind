@@ -1,12 +1,13 @@
 import random
-from src.constantes import colores, longitud_codigo, tamanio_poblacion
+from src.constantes import COLORES, LONGITUD_CODIGO, TAMANIO_POBLACION
 
 def crear_poblacion():
-    """Paso 3: Crea la población inicial."""
+    #Paso 3: Crea la población inicial.
+
     poblacion = []
-    for _ in range(tamanio_poblacion):
+    for _ in range(TAMANIO_POBLACION): #40 veces
         individuo = []
-        for _ in range(longitud_codigo):
-            individuo.append(random.choice(colores))
+        for _ in range(LONGITUD_CODIGO): #sacar 4 colores aleatorios
+            individuo.append(random.choice(COLORES))
         poblacion.append(individuo)
     return poblacion

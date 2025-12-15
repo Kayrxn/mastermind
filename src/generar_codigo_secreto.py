@@ -1,8 +1,8 @@
 import random
-from src.constantes import colores, longitud_codigo
+from src.constantes import COLORES, LONGITUD_CODIGO
 
 def generar_codigo():
     codigo = []
-    for _ in range(longitud_codigo):
-        codigo.append(random.choice(colores))
+    for _ in range(LONGITUD_CODIGO):
+        codigo.append(random.choice(COLORES))
     return codigo

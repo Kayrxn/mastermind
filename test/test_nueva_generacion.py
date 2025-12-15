@@ -1,6 +1,6 @@
 # test_nueva_generacion_colores.py
 from src.nueva_generacion import crear_nueva_generacion
-from src.constantes import tamanio_poblacion, colores
+from src.constantes import TAMANIO_POBLACION, COLORES
 
 def test_nueva_generacion_colores():
     padres = [
@@ -13,7 +13,7 @@ def test_nueva_generacion_colores():
     nueva = crear_nueva_generacion(padres)
     
     # 1. Tamaño correcto
-    assert len(nueva) == tamanio_poblacion
+    assert len(nueva) == TAMANIO_POBLACION
     
     # 2. Todos son listas
     for ind in nueva:
@@ -22,4 +22,4 @@ def test_nueva_generacion_colores():
     # 3. Todos los colores están permitidos
     for ind in nueva:
         for color in ind:
-            assert color in colores
+            assert color in COLORES

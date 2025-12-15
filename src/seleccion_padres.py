@@ -1,15 +1,15 @@
 from src.fitness import calcular_fitness
-from src.constantes import tamanio_poblacion
+from src.constantes import TAMANIO_POBLACION
 
 def seleccionar_padres(poblacion, codigo_secreto):
-    """Paso 5: Selecciona el 80% superior por fitness, sin repetir padres."""
+    #Paso 5: Selecciona el 80% superior por fitness, sin repetir padres.
 
-    resultados = []  # Guardará tuplas (individuo, valor_fitness)
+    resultados = []  #guardará tuplas (individuo, valor_fitness)
     for individuo in poblacion:
         fit, _, _ = calcular_fitness(individuo, codigo_secreto)
         resultados.append([individuo, fit])
 
-    # Ordenar manualmente por fitness (burbuja)
+    #ordenar manualmente por fitness
     n = len(resultados)
     for i in range(n - 1):
         for j in range(0, n - i - 1):
@@ -18,7 +18,7 @@ def seleccionar_padres(poblacion, codigo_secreto):
                 resultados[j] = resultados[j + 1]
                 resultados[j + 1] = temp
 
-    numero_padres = int(tamanio_poblacion * 0.8)
+    numero_padres = int(TAMANIO_POBLACION * 0.8)
     padres = []
     usados = []
 

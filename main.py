@@ -1,4 +1,4 @@
-from src.constantes import max_generaciones, tamanio_poblacion
+from src.constantes import MAX_GENERACION
 from src.generar_codigo_secreto import generar_codigo
 from src.crear_poblacion import crear_poblacion
 from src.fitness import calcular_fitness
@@ -15,7 +15,7 @@ def main():
 
     # Bucle principal de generaciones
     generacion = 1
-    while generacion <= max_generaciones:
+    while generacion <= MAX_GENERACION:
         # 4. Measure fitness of individuals
         mejor = poblacion[0]
         mejor_fitness, negros, blancos = calcular_fitness(mejor, codigo_secreto)
@@ -41,9 +41,8 @@ def main():
         padres = seleccionar_padres(poblacion, codigo_secreto)
 
         # 6–7. Reproduce offspring & populate next generation
-        poblacion = crear_nueva_generacion(padres)
+        poblacion = crear_nueva_generacion(padres, codigo_secreto)  # Pasar codigo_secreto
 
-        # 8. Measure fitness of next generation (implícito al siguiente bucle)
         generacion = generacion + 1
 
     print("\nNo se adivinó el código dentro del límite de generaciones.")

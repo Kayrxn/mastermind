@@ -1,5 +1,5 @@
-colores = ["rojo", "verde", "azul", "amarillo", "blanco", "negro"]
-longitud_codigo = 4
-tamanio_poblacion = 40
-prob_mutacion = 0.10
-max_generaciones = 14
+COLORES = ["rojo", "verde", "azul", "amarillo", "blanco", "negro"]
+LONGITUD_CODIGO = 4
+TAMANIO_POBLACION = 40
+PROB_MUTACION = 0.10
+MAX_GENERACION = 14
