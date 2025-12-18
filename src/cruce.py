@@ -1,3 +1,5 @@
+#cruce
+
 import random
 from src.constantes import LONGITUD_CODIGO
 
