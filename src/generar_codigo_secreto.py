@@ -1,3 +1,5 @@
+#generar codigo secreto
+
 import random
 from src.constantes import COLORES, LONGITUD_CODIGO
 
