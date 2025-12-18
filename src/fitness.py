@@ -1,3 +1,5 @@
+#fitness
+
 def calcular_fitness(individuo, codigo_secreto):
     #Paso 4: Mide la aptitud (fitness) de cada individuo.
 
