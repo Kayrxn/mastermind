@@ -48,9 +48,10 @@ def main():
     }
 
     # -----------------------------------------------------------------
-    # Bucle principal de generaciones
+
     generacion = 1
     while generacion <= MAX_GENERACION:
+        
         # 4. Measure fitness of individuals
         mejor = poblacion[0]
         mejor_fitness, negros, blancos = calcular_fitness(mejor, codigo_secreto)
