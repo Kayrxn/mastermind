@@ -1,3 +1,5 @@
+#mutacion
+
 import random
 from src.constantes import COLORES, PROB_MUTACION
 
