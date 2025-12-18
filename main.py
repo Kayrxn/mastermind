@@ -46,13 +46,12 @@ def main():
         "blanco": [],
         "negro": []
     }
-
     # -----------------------------------------------------------------
 
     generacion = 1
     while generacion <= MAX_GENERACION:
         
-        # 4. Measure fitness of individuals
+        #4. Measure fitness of individuals
         mejor = poblacion[0]
         mejor_fitness, negros, blancos = calcular_fitness(mejor, codigo_secreto)
 
@@ -64,31 +63,33 @@ def main():
                 negros = n
                 blancos = b
 
-        # Mostrar intento en consola
+        #Mostrar intento en consola
         visual = "●" * negros + "○" * blancos + " " * (len(codigo_secreto) - negros - blancos)
         print("Intento", generacion, ":", mejor, visual)
+
 
         # -------------------- GUARDAR DATOS PARA MATPLOTLIB --------------------
         lista_intentos.append(mejor)
         lista_pistas.append((negros, blancos))
         generaciones.append(generacion)
 
-        # Matplotlib grafica fitness
+        #Matplotlib grafica fitness
         fitness_gen = fitness_por_color(poblacion, codigo_secreto)
         for color in fitness_colores:
             fitness_colores[color].append(fitness_gen[color])
         # ------------------------------------------------------------------------
 
-        #  Comprobar si adivino el código
+
+        # Comprobar si adivino el código
         if mejor == codigo_secreto:
             print("\n¡La máquina adivinó el código en la generación", generacion, "!")
             # No retornamos aquí; dejamos que los gráficos se muestren
             break
         
-        # 5. Select parents
+        #5. Select parents
         padres = seleccionar_padres(poblacion, codigo_secreto)
 
-        # 6–7. Reproduce offspring & populate next generation
+        #6–7. Reproduce offspring & populate next generation
         poblacion = crear_nueva_generacion(padres)  # Pasar codigo_secreto
 
         generacion = generacion + 1
