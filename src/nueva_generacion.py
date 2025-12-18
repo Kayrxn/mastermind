@@ -1,3 +1,5 @@
+#nueva generacion
+
 import random
 from src.cruce import cruzar_padres
 from src.mutacion import mutar
