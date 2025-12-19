@@ -146,6 +146,13 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 <br>
 <br>
 
+# ⛓️ Diagrama de componentes
+
+![](media/grafico.png)
+
+<br>
+<br>
+
 # 🔧Tecnologías utilizadas
 
 - **Python**:
