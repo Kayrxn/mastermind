@@ -196,8 +196,8 @@ def graficar_barras_fitness_por_generacion_y_color(generaciones, fitness_colores
     )
 
     plt.xlabel("Generación")
-    plt.ylabel("Fitness total")
-    plt.title("Fitness Total por Color y Generación", fontsize=14)
+    plt.ylabel("")
+    plt.title("Gráfica de colores", fontsize=14)
 
     plt.grid(axis="y", alpha=0.3)
     plt.legend(title="Colores", ncol=3)

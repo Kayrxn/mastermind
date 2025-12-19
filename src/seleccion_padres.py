@@ -6,7 +6,7 @@ from src.constantes import TAMANIO_POBLACION
 def seleccionar_padres(poblacion, codigo_secreto):
     # Paso 5: Selecciona el 80% superior por fitness, sin repetir padres.
 
-    resultados = []  # guardará tuplas (individuo, valor_fitness)
+    resultados = []  # guardará lista (individuo, valor_fitness)
     for individuo in poblacion:
         fit, _, _ = calcular_fitness(individuo, codigo_secreto)
         resultados.append([individuo, fit])

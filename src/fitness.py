@@ -8,6 +8,7 @@ def calcular_fitness(individuo, codigo_secreto):
     secreto = codigo_secreto.copy()
     intento = individuo.copy()
 
+
     for i in range(len(individuo)):  #4 veces
         if intento[i] == secreto[i]:  #si coincide exactamente
             negros += 1  #incrementar negros

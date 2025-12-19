@@ -31,8 +31,9 @@ def crear_nueva_generacion(padres, codigo_secreto=None):
         nueva_poblacion.append(hijo1)
         nueva_poblacion.append(hijo2)
 
-    #Si se proporcionó el código secreto, ordenar por fitness descendente
-    if codigo_secreto is not None:
-        nueva_poblacion.sort(key=lambda x: calcular_fitness(x, codigo_secreto)[0], reverse=True)
+    #Si se proporcionó el código secreto, ordenar por fitness
+    def ordenar_poblacion_por_fitness():
+        if codigo_secreto is not None:
+            nueva_poblacion.sort(calcular_fitness(nueva_poblacion, codigo_secreto)[0], reverse=True)
 
     return nueva_poblacion[:TAMANIO_POBLACION]

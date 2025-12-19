@@ -1,4 +1,4 @@
-from src.constantes import MAX_GENERACION
+from src.constantes import MAX_GENERACION, COLORES
 from src.generar_codigo_secreto import generar_codigo
 from src.crear_poblacion import crear_poblacion
 from src.fitness import calcular_fitness
@@ -6,13 +6,13 @@ from src.seleccion_padres import seleccionar_padres
 from src.nueva_generacion import crear_nueva_generacion
 
 # -------------------- IMPORTAR FUNCIONES DE MATPLOTLIB --------------------
+
 from src.graficos import graficar_tablero, graficar_barras_fitness_por_generacion_y_color
 import matplotlib
 matplotlib.use("TkAgg")  # Forzar backend que abre ventana de gráficos
-# -------------------------------------------------------------------------
 
 def fitness_por_color(poblacion, codigo_secreto):
-    colores = ["rojo", "verde", "azul", "amarillo", "blanco", "negro"]
+    colores = COLORES
     conteo = {color: [] for color in colores}
 
     for individuo in poblacion:
@@ -20,10 +20,9 @@ def fitness_por_color(poblacion, codigo_secreto):
         for color in set(individuo):
             conteo[color].append(fit)
 
-    return {
-        color: sum(valores)
-        for color, valores in conteo.items()
-    }
+    return {color: sum(valores) for color, valores in conteo.items()}
+
+# -------------------------------------------------------------------------
 
 
 def main():
@@ -35,6 +34,7 @@ def main():
     poblacion = crear_poblacion()
 
     # -------------------- LISTAS PARA MATPLOTLIB --------------------
+
     lista_intentos = []
     lista_pistas = []
     generaciones = []
@@ -46,20 +46,22 @@ def main():
         "blanco": [],
         "negro": []
     }
+
     # -----------------------------------------------------------------
 
     generacion = 1
     while generacion <= MAX_GENERACION:
         
+
         #4. Measure fitness of individuals
         mejor = poblacion[0]
         mejor_fitness, negros, blancos = calcular_fitness(mejor, codigo_secreto)
 
-        for individuo in poblacion:
-            fit, n, b = calcular_fitness(individuo, codigo_secreto)
-            if fit > mejor_fitness:
-                mejor = individuo
-                mejor_fitness = fit
+        for individuo in poblacion:  
+            fit, n, b = calcular_fitness(individuo, codigo_secreto)  #pasa los tres parámetros a fitness
+            if fit > mejor_fitness:  
+                mejor = individuo   #actualiza el mejor individuo
+                mejor_fitness = fit  #y lo guarda de nuevo en fit
                 negros = n
                 blancos = b
 
@@ -69,6 +71,7 @@ def main():
 
 
         # -------------------- GUARDAR DATOS PARA MATPLOTLIB --------------------
+
         lista_intentos.append(mejor)
         lista_pistas.append((negros, blancos))
         generaciones.append(generacion)
@@ -77,27 +80,29 @@ def main():
         fitness_gen = fitness_por_color(poblacion, codigo_secreto)
         for color in fitness_colores:
             fitness_colores[color].append(fitness_gen[color])
+
         # ------------------------------------------------------------------------
 
 
         # Comprobar si adivino el código
         if mejor == codigo_secreto:
             print("\n¡La máquina adivinó el código en la generación", generacion, "!")
-            # No retornamos aquí; dejamos que los gráficos se muestren
             break
         
         #5. Select parents
         padres = seleccionar_padres(poblacion, codigo_secreto)
 
         #6–7. Reproduce offspring & populate next generation
-        poblacion = crear_nueva_generacion(padres)  # Pasar codigo_secreto
+        poblacion = crear_nueva_generacion(padres) 
 
         generacion = generacion + 1
+
 
     # -------------------- LLAMADAS A MATPLOTLIB AL FINAL --------------------
     graficar_tablero(lista_intentos, lista_pistas, codigo_secreto)
     graficar_barras_fitness_por_generacion_y_color(generaciones, fitness_colores)
     # ------------------------------------------------------------------------
+
 
 if __name__ == "__main__":
     main()
