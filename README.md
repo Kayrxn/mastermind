@@ -1,9 +1,12 @@
 
-## Introducción
+# Introducción
 Sara García Garrido - [@Karyxn](https://github.com/Kayrxn)  
 Francisco Pérez Cid - [@francis85a](https://github.com/francis85a)
 
 Este proyecto se ha realizado como parte de la asignatura de Programación en el Ciclo superior de Desarrollo de Aplicaciones Multiplataforma (DAM) en el IES de Teis.
+
+<br>
+<br>
 
 # Instalación
 
@@ -25,9 +28,15 @@ Para ejecutar este proyecto, asegúrate de tener Python instalado en tu sistema.
 `pip insall uv`  
 `uv sync`  
 
+<br>
+<br>
+
 # 🔑Uso
 
 Ejecuta el archivo `main.py` para iniciar el juego
+
+<br>
+<br>
 
 # 📑Metodología
 
@@ -35,14 +44,22 @@ Se ha utilizado la metodología TDD (Desarrollo guiado por pruebas) para asegura
 
 Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del progreso del proyecto: https://github.com/users/Kayrxn/projects/2.
 
+<br>
+<br>
+
 # ⚙️Descripción técnica
 
 | Not list |  |  |
 |----------|----------|----------|
-| Generación de código | xxxxxxxxxx | xxxxxxxxxx |
-| Intentos de adivinar el código | xxxxxxxxxx | xxxxxxxxxx |
-| Representación gráfica de los intentos | xxxxxxxxxx | xxxxxxxxxx |
-| Gráfica representando el valor fitness | xxxxxxxxxx | xxxxxxxxxx |
+| **In Scope** | **Out of Scope** | **Unresolved** |
+| Implementación del algoritmo genético | Interfaz gráfica avanzada | Estrategia de mutación (fija o adaptativa) |
+| Generación del código secreto | Persistencia de datos | Criterio de parada (umbral de fitness) |
+| Visualización en consola de los intentos | Integración automatizada | Nivel de detalle en los mensajes |
+| Diseño modular | Optimización matemática avanzada | Incorporación de logs |
+| Desarrollo TDD con tests unitarios | Soporte multijugador | Control de aleatoriedad |
+
+<br>
+<br>
 
 
 # Historias de Usuario
@@ -124,7 +141,10 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 **Criterios de aceptación:**  
 - El algoritmo se detiene si la máquina adivina el código.  
 - Se muestra en consola la evolución de la población generación a generación.  
-- Se informa si no se adivinó el código al alcanzar el límite de generaciones.  
+- Se informa si no se adivinó el código al alcanzar el límite de generaciones. 
+
+<br>
+<br>
 
 # 🔧Tecnologías utilizadas
 
@@ -139,3 +159,66 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 - **matplotlib**: Para la generación de gráficos.
 - **Markdown**: Para la documentación del proyecto.
 - **Git & Github**: Para el control de versiones.
+
+<br>
+<br>
+
+# 🎚️Pruebas
+
+Muestra del **coverage**
+![](media/coverage.png)
+
+Muestra del **pytest**
+![](media/pytest.png)
+
+<br>
+<br>
+
+# ⏳Análisis del tiempo invertido
+
+La duración del proyecto ha sido de dos semanas aproximadamente. Los primeros días se utilizaron para comprender cómo llevar el algoritmo genético a desarrollo TDD, luego se repartieron los módulos entre ambos, y finalmente se trabajó en la implementación de todo el apartado gráfico.
+
+Captura del panel - **Sara**
+![](media/WakatimeSara.png)
+
+Captura de los módulos - **Sara**
+![](media/ModulosSara.png)
+
+Captura del panel - **Fran**
+![](media/xxxx)
+
+Captura de los módulos - **Fran**
+![](media/xxxx)
+
+<br>
+<br>
+
+# 🤖Uso de la IA
+
+- ¿Qué herramienta de IA generativa usaste?
+
+    - ChatGPT y Copilot.
+
+- ¿Para qué usaste la herramienta?
+
+    - Para generar un ejemplo inicial de aplicación de algoritmo genérico (con ChatGPT) que nos mostrase cómo poder dividir las responsabilidades de cada parte. No teníamos claro cómo adaptar los ejemplos proporcionados en clase al mastermind.
+    - Explicaciones y ayuda con los módulos de la librería random.
+    - Ayuda con el uso correcto de funciones lambda para refactorizar código.
+    - Explicaciones y generación mediante Copilot del apartado gráfico.
+
+
+- ¿Cómo has utilizado o cambiado la salida de la IA generativa?
+
+    - Las salidas de copilot para refactorización no se modificaron (funciones lambda)
+    - El apartado gráfico generado por copilot se cambió para diferenciarlo mejor de la estructura del algoritmo genérico en main.py, a parte de algunas correcciones menores de texto y mejor uso de nuestras constantes.
+    - Aunque el ejemplo inicial de ChatGPT fue útil para entender el algoritmo, no sirvió de nada para el proyecto final.
+
+
+<br>
+<br>
+
+# 🔐 Dificultades
+
+- Comprensión del algoritmo inicial y cómo aplicarlo a TDD.
+- Creación de casos test *antes* de la creación del script en sí mismo.
+- Creación de los gráficos con matplotlib, incluso con ayuda de la IA.

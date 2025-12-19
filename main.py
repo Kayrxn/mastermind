@@ -99,8 +99,10 @@ def main():
 
 
     # -------------------- LLAMADAS A MATPLOTLIB AL FINAL --------------------
+
     graficar_tablero(lista_intentos, lista_pistas, codigo_secreto)
     graficar_barras_fitness_por_generacion_y_color(generaciones, fitness_colores)
+    
     # ------------------------------------------------------------------------
 
 
