@@ -14,19 +14,10 @@ Para ejecutar este proyecto, asegúrate de tener Python instalado en tu sistema.
 
 `git clone https://github.com/Kayrxn/mastermind.git`  
 
-■ Crea un entorno virtual:  
+■ Utiliza uv para crear el entorno virtual con todas las dependencias (y activarlo):  
 
-`python -m venv venv`  
-
-■ Activa el entorno virtual:  
-- En Windows: `venv\Scripts\activate`  
-- En macOS/Linux: `source venv/bin/activate` 
-
-
-■ Instala las dependencias necesarias usando uv:  
-
-`pip insall uv`  
-`uv sync`  
+`pip install uv`   
+`uv sync` 
 
 <br>
 <br>
@@ -101,7 +92,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 
 ## 4 – Selección de padres
 **Como** desarrollador,  
-**quiero** un mecanismo de selección (torneo) para elegir los mejores individuos,  
+**quiero** un mecanismo de selección para elegir los mejores individuos,  
 **para** que la reproducción del algoritmo genético favorezca combinaciones más cercanas al código secreto.  
 
 **Criterios de aceptación:**  
@@ -211,6 +202,7 @@ Captura de los módulos - **Fran**
     - Para generar un ejemplo inicial de aplicación de algoritmo genérico (con ChatGPT) que nos mostrase cómo poder dividir las responsabilidades de cada parte. No teníamos claro cómo adaptar los ejemplos proporcionados en clase al mastermind.
     - Explicaciones y ayuda con los módulos de la librería random.
     - Ayuda con el uso correcto de funciones lambda para refactorizar código.
+    - Generación de casos tests.
     - Explicaciones y generación mediante Copilot del apartado gráfico.
 
 

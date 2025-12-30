@@ -28,7 +28,7 @@ def fitness_por_color(poblacion, codigo_secreto):
 def main():
 
     codigo_secreto = generar_codigo()
-    print(f"Código secreto: {codigo_secreto}\n")
+    print(f"\nCódigo secreto: {codigo_secreto}\n")
 
     # 3. Create initial population
     poblacion = crear_poblacion()
@@ -54,25 +54,27 @@ def main():
         
 
         #4. Measure fitness of individuals
-        mejor = poblacion[0]
-        mejor_fitness, negros, blancos = calcular_fitness(mejor, codigo_secreto)
+        mejor_individuo = None
+        mejor_fitness = -1
+        negros = 0
+        blancos = 0
 
-        for individuo in poblacion:  
-            fit, n, b = calcular_fitness(individuo, codigo_secreto)  #pasa los tres parámetros a fitness
-            if fit > mejor_fitness:  
-                mejor = individuo   #actualiza el mejor individuo
-                mejor_fitness = fit  #y lo guarda de nuevo en fit
+        for individuo in poblacion:
+            fit, n, b = calcular_fitness(individuo, codigo_secreto)
+            if fit > mejor_fitness:
+                mejor_individuo = individuo
+                mejor_fitness = fit
                 negros = n
                 blancos = b
 
         #Mostrar intento en consola
-        visual = "●" * negros + "○" * blancos + " " * (len(codigo_secreto) - negros - blancos)
-        print("Intento", generacion, ":", mejor, visual)
+        visual = "●" * negros + "○" * blancos
+        print("Intento", generacion, ":", mejor_individuo, visual)
 
 
         # -------------------- GUARDAR DATOS PARA MATPLOTLIB --------------------
 
-        lista_intentos.append(mejor)
+        lista_intentos.append(mejor_individuo)
         lista_pistas.append((negros, blancos))
         generaciones.append(generacion)
 
@@ -85,8 +87,8 @@ def main():
 
 
         # Comprobar si adivino el código
-        if mejor == codigo_secreto:
-            print("\n¡La máquina adivinó el código en la generación", generacion, "!")
+        if mejor_individuo == codigo_secreto:
+            print("\n¡La máquina adivinó el código en la generación", generacion, "!\n")
             break
         
         #5. Select parents
@@ -95,7 +97,7 @@ def main():
         #6–7. Reproduce offspring & populate next generation
         poblacion = crear_nueva_generacion(padres) 
 
-        generacion = generacion + 1
+        generacion += 1
 
 
     # -------------------- LLAMADAS A MATPLOTLIB AL FINAL --------------------

@@ -4,17 +4,18 @@ from src.fitness import calcular_fitness
 from src.constantes import TAMANIO_POBLACION
 
 def seleccionar_padres(poblacion, codigo_secreto):
-    # Paso 5: Selecciona el 80% superior por fitness, sin repetir padres.
+    # Paso 5: Selecciona el 50% superior por fitness, sin repetir padres.
 
-    resultados = []  # guardará lista (individuo, valor_fitness)
+    resultados = []  #creamos lista para los resultados [[individuo, valor_fitness],[individuo, valor_fitness], ...]
     for individuo in poblacion:
         fit, _, _ = calcular_fitness(individuo, codigo_secreto)
         resultados.append([individuo, fit])
 
-    # Ordenar por fitness de mayor a menor
-    resultados_ordenados = sorted(resultados, key=lambda x: x[1], reverse=True)
+    #Ordenar por fitness de mayor a menor
+    resultados_ordenados = sorted(resultados, key=lambda intento: intento[1], reverse=True)
+    #lista a ordenar, factor de ordenación, orden descendente
 
-    numero_padres = int(TAMANIO_POBLACION * 0.8) #seleccioona el 80% de 40 como numero_padres
+    numero_padres = int(TAMANIO_POBLACION * 0.5) #selecciona el 50% de la población como numero_padres
     padres = []
     usados = []
 
