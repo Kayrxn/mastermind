@@ -1,5 +1,3 @@
-#crear_poblacion
-
 import random
 from src.constantes import COLORES, LONGITUD_CODIGO, TAMANIO_POBLACION
 

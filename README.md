@@ -43,11 +43,11 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 | Not list |  |  |
 |----------|----------|----------|
 | **In Scope** | **Out of Scope** | **Unresolved** |
-| Implementación del algoritmo genético | Interfaz gráfica avanzada | Estrategia de mutación (fija o adaptativa) |
-| Generación del código secreto | Persistencia de datos | Criterio de parada (umbral de fitness) |
-| Visualización en consola de los intentos | Integración automatizada | Nivel de detalle en los mensajes |
-| Diseño modular | Optimización matemática avanzada | Incorporación de logs |
-| Desarrollo TDD con tests unitarios | Soporte multijugador | Control de aleatoriedad |
+| Implementación del algoritmo genético | Interfaz gráfica avanzada | Incorporación de logs |
+| Generación del código secreto | Persistencia de datos | Soporte multijugador |
+| Visualización en consola de los intentos |  |  |
+| Diseño modular |  |  |
+| Desarrollo TDD con tests unitarios |  |  |
 
 <br>
 <br>
@@ -103,7 +103,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 
 ## 5 – Cruce de individuos
 **Como** desarrollador,  
-**quiero** una función de cruce (un punto) para generar hijos a partir de dos padres,  
+**quiero** una función de cruce para generar hijos a partir de dos padres,  
 **para** combinar características de individuos con buen fitness y mejorar la población.  
 
 **Criterios de aceptación:**  
@@ -118,9 +118,8 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 **para** mantener diversidad genética y evitar estancamiento del algoritmo.  
 
 **Criterios de aceptación:**  
-- La mutación no debe modificar la lista original del individuo.  
 - El color resultante debe ser válido.  
-- Todas las posiciones del individuo pueden ser mutadas eventualmente.  
+- Todas las posiciones del individuo pueden ser mutadas.  
 
 ---
 
@@ -182,10 +181,10 @@ Captura del panel - **Sara**
 Captura de los módulos - **Sara**
 ![](media/ModulosSara.png)
 
-Captura del panel - **Fran**
-![](media/xxxx)
+Captura del panel - **Fran**  
+![](media/WakatimeFran.png)
 
-Captura de los módulos - **Fran**
+Captura de los módulos - **Fran**  
 ![](media/xxxx)
 
 <br>

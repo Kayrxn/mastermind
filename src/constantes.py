@@ -1,5 +1,3 @@
-#constantes
-
 COLORES = ["rojo", "verde", "azul", "amarillo", "blanco", "negro"]
 LONGITUD_CODIGO = 4
 TAMANIO_POBLACION = 80

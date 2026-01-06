@@ -1,5 +1,3 @@
-#selección_padres
-
 from src.fitness import calcular_fitness
 from src.constantes import TAMANIO_POBLACION
 

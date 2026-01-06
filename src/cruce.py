@@ -1,5 +1,3 @@
-#cruce
-
 def cruzar_padres(padre1, padre2):
     #Paso 6: Cruza dos padres.
 

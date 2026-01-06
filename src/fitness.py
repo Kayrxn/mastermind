@@ -1,4 +1,5 @@
-#fitness
+
+
 
 def calcular_fitness(individuo, codigo_secreto):
     #Paso 4: Mide la aptitud (fitness) de cada individuo.
@@ -9,7 +10,7 @@ def calcular_fitness(individuo, codigo_secreto):
     intento = individuo.copy()
 
 
-    for i in range(len(individuo)):  #4 veces
+    for i in range(len(individuo)):  #recorre indices de individuo
         if intento[i] == secreto[i]:  #si coincide exactamente
             negros += 1  #incrementar negros
             secreto[i] = None  #marcar como usado

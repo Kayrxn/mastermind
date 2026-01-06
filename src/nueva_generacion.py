@@ -1,5 +1,3 @@
-#nueva generacion
-
 import random
 from src.cruce import cruzar_padres
 from src.mutacion import mutar
@@ -31,4 +29,4 @@ def crear_nueva_generacion(padres):
         nueva_poblacion.append(hijo1)
         nueva_poblacion.append(hijo2)
 
-    return nueva_poblacion[:TAMANIO_POBLACION]
+    return nueva_poblacion

@@ -1,4 +1,3 @@
-# test_nueva_generacion_colores.py
 from src.nueva_generacion import crear_nueva_generacion
 from src.constantes import TAMANIO_POBLACION, COLORES
 
