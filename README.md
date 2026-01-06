@@ -184,8 +184,12 @@ Captura de los módulos - **Sara**
 Captura del panel - **Fran**  
 ![](media/WakatimeFran.png)
 
+Captura de la grafica - **Fran**
+
+![](media/graficaFran.webp)
+
 Captura de los módulos - **Fran**  
-![](media/xxxx)
+![](media/ModulosFrancisco.webp)
 
 <br>
 <br>
