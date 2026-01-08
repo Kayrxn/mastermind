@@ -1,4 +1,4 @@
-from src.fitness import calcular_fitness
+from logica.fitness import calcular_fitness
 
 def test_calculo_fitness_correcto():
     codigo = ["rojo", "verde", "azul", "amarillo"]

@@ -1,5 +1,5 @@
-from src.nueva_generacion import crear_nueva_generacion
-from src.constantes import TAMANIO_POBLACION, COLORES
+from logica.nueva_generacion import crear_nueva_generacion
+from logica.constantes import TAMANIO_POBLACION, COLORES
 
 def test_nueva_generacion_colores():
     padres = [

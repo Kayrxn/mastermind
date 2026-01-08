@@ -1,4 +1,4 @@
-from src.mutacion import mutar
+from logica.mutacion import mutar
 
 def test_mutacion_mismo_tamano():
     ind = ["rojo", "verde", "azul", "amarillo"]

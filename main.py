@@ -1,13 +1,13 @@
-from src.constantes import MAX_GENERACION, COLORES
-from src.generar_codigo_secreto import generar_codigo
-from src.crear_poblacion import crear_poblacion
-from src.fitness import calcular_fitness
-from src.seleccion_padres import seleccionar_padres
-from src.nueva_generacion import crear_nueva_generacion
+from logica.constantes import MAX_GENERACION, COLORES
+from logica.generar_codigo_secreto import generar_codigo
+from logica.crear_poblacion import crear_poblacion
+from logica.fitness import calcular_fitness
+from logica.seleccion_padres import seleccionar_padres
+from logica.nueva_generacion import crear_nueva_generacion
 
 # -------------------- IMPORTAR FUNCIONES DE MATPLOTLIB --------------------
 
-from src.graficos import graficar_tablero, graficar_barras_fitness_por_generacion_y_color
+from presentacion.graficos import graficar_tablero, graficar_barras_fitness_por_generacion_y_color
 import matplotlib
 matplotlib.use("TkAgg")  # Forzar backend que abre ventana de gráficos
 

@@ -1,4 +1,4 @@
-from src.cruce import cruzar_padres
+from logica.cruce import cruzar_padres
 
 def test_cruce_dos_hijos_mismo_tamano():
     p1 = ["rojo", "verde", "azul", "amarillo"]

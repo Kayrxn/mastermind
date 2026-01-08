@@ -1,5 +1,5 @@
-from src.seleccion_padres import seleccionar_padres
-from src.constantes import TAMANIO_POBLACION, COLORES
+from logica.seleccion_padres import seleccionar_padres
+from logica.constantes import TAMANIO_POBLACION, COLORES
 import random
 
 def test_selecciona_50_por_ciento_unicos():

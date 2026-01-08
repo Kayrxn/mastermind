@@ -1,5 +1,5 @@
-from src.crear_poblacion import crear_poblacion
-from src.constantes import TAMANIO_POBLACION, LONGITUD_CODIGO
+from logica.crear_poblacion import crear_poblacion
+from logica.constantes import TAMANIO_POBLACION, LONGITUD_CODIGO
 
 def test_tamano_poblacion():
     poblacion = crear_poblacion()

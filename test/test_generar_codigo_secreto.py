@@ -1,5 +1,5 @@
-from src.generar_codigo_secreto import generar_codigo
-from src.constantes import COLORES, LONGITUD_CODIGO
+from logica.generar_codigo_secreto import generar_codigo
+from logica.constantes import COLORES, LONGITUD_CODIGO
 
 def test_generar_codigo_valido():
     codigo = generar_codigo()

@@ -138,7 +138,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 
 # ⛓️ Diagrama de componentes
 
-![](media/grafico.png)
+![](media/grafico2.png)
 
 <br>
 <br>
