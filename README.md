@@ -1,7 +1,11 @@
+# MASTERMIND
 
 # Introducción
 Sara García Garrido - [@Karyxn](https://github.com/Kayrxn)  
 Francisco Pérez Cid - [@francis85a](https://github.com/francis85a)
+
+
+El proyecto consiste en crear el juego Mastermind mediante un algoritmo genetico.
 
 Este proyecto se ha realizado como parte de la asignatura de Programación en el Ciclo superior de Desarrollo de Aplicaciones Multiplataforma (DAM) en el IES de Teis.
 
@@ -79,7 +83,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 ---
 
 ## 3 – Evaluación de fitness
-**Como** desarrollador,  
+**Como** maquina,  
 **quiero** una función de fitness que compare cada individuo con el código secreto,  
 **para** que el algoritmo genético pueda seleccionar las mejores combinaciones.  
 
@@ -91,7 +95,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 ---
 
 ## 4 – Selección de padres
-**Como** desarrollador,  
+**Como** maquina,  
 **quiero** un mecanismo de selección para elegir los mejores individuos,  
 **para** que la reproducción del algoritmo genético favorezca combinaciones más cercanas al código secreto.  
 
@@ -102,7 +106,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 ---
 
 ## 5 – Cruce de individuos
-**Como** desarrollador,  
+**Como** maquina,  
 **quiero** una función de cruce para generar hijos a partir de dos padres,  
 **para** combinar características de individuos con buen fitness y mejorar la población.  
 
@@ -113,7 +117,7 @@ Utilizamos un panel kaban para organizar las tareas y hacer seguimiento del prog
 ---
 
 ## 6 – Mutación
-**Como** desarrollador,  
+**Como** maquina,  
 **quiero** una función de mutación que altere aleatoriamente un color en un individuo según una probabilidad,  
 **para** mantener diversidad genética y evitar estancamiento del algoritmo.  
 
@@ -222,5 +226,13 @@ Captura de los módulos - **Fran**
 # 🔐 Dificultades
 
 - Comprensión del algoritmo inicial y cómo aplicarlo a TDD.
+- Problemas con la cantidad de poblacion y cruce de padres.
 - Creación de casos test *antes* de la creación del script en sí mismo.
 - Creación de los gráficos con matplotlib, incluso con ayuda de la IA.
+
+
+# Posibles mejoras
+
+- Realizar casos test mas precisos y constantes para evitar errores imprecisos.
+- Posibilidad de hacer que el juego sea interactivo y sea jugable por dos jugadores.
+- Mejorar el algoritmo genetico.
