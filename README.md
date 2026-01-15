@@ -180,14 +180,9 @@ Muestra del **pytest**
 
 La duración del proyecto ha sido de dos semanas aproximadamente. Los primeros días se utilizaron para comprender cómo llevar el algoritmo genético a desarrollo TDD, luego se repartieron los módulos entre ambos, y finalmente se trabajó en la implementación de todo el apartado gráfico.
 
-Captura del panel - **Sara**
-![](media/WakatimeSara.png)
+Captura de la grafica - **Sara**
 
-Captura de los módulos - **Sara**
-![](media/ModulosSara.png)
-
-Captura del panel - **Fran**  
-![](media/WakatimeFran.png)
+![](media/grafico_horas_invertidas_sara.png.png)
 
 Captura de la grafica - **Fran**
 
