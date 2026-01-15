@@ -1,7 +1,9 @@
+import pytest
 from logica.seleccion_padres import seleccionar_padres
 from logica.constantes import TAMANIO_POBLACION, COLORES
 import random
 
+@pytest.mark.seleccion_50_por_ciento_unicos
 def test_selecciona_50_por_ciento_unicos():
     #crear población variada aleatoriamente
     poblacion = []

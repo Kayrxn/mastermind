@@ -1,5 +1,7 @@
+import pytest
 from logica.fitness import calcular_fitness
 
+@pytest.mark.calculo_fitness_correcto
 def test_calculo_fitness_correcto():
     codigo = ["rojo", "verde", "azul", "amarillo"]
     intento = ["rojo", "azul", "azul", "negro"]

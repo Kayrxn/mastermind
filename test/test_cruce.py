@@ -1,5 +1,7 @@
+import pytest
 from logica.cruce import cruzar_padres
 
+@pytest.mark.cruce_mismo_tamano
 def test_cruce_dos_hijos_mismo_tamano():
     p1 = ["rojo", "verde", "azul", "amarillo"]
     p2 = ["negro", "blanco", "blanco", "verde"]

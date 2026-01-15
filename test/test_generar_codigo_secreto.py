@@ -1,6 +1,8 @@
+import pytest
 from logica.generar_codigo_secreto import generar_codigo
 from logica.constantes import COLORES, LONGITUD_CODIGO
 
+@pytest.mark.generar_codigo_valido
 def test_generar_codigo_valido():
     codigo = generar_codigo()
     assert len(codigo) == LONGITUD_CODIGO

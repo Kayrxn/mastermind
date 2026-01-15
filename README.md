@@ -5,7 +5,8 @@ Sara García Garrido - [@Karyxn](https://github.com/Kayrxn)
 Francisco Pérez Cid - [@francis85a](https://github.com/francis85a)
 
 
-El proyecto consiste en crear el juego Mastermind mediante un algoritmo genetico.
+El proyecto implementa el juego Mastermind utilizando un algoritmo genético para adivinar la combinación secreta. El algoritmo genera posibles soluciones y las va mejorando iterativamente mediante selección, cruce y mutación, buscando encontrar la combinación correcta en el menor número de intentos.
+Es un ejemplo práctico de cómo los métodos de inteligencia artificial y optimización evolutiva pueden aplicarse a problemas de lógica y estrategia.
 
 Este proyecto se ha realizado como parte de la asignatura de Programación en el Ciclo superior de Desarrollo de Aplicaciones Multiplataforma (DAM) en el IES de Teis.
 
@@ -190,10 +191,11 @@ Captura del panel - **Fran**
 
 Captura de la grafica - **Fran**
 
-![](media/graficaFran.webp)
+![](media/grafico_horas_invertidas_francisco.png)
 
-Captura de los módulos - **Fran**  
-![](media/ModulosFrancisco.webp)
+# Justificación del tiempo invertido
+
+Empezamos trabajando de forma conjunta en el mismo ordenador haciendo pair programing para poder resolver mejor las dudas del algoritmo genetico, por eso hay una diferencia de horas entre Sara y Fran, luego nos repartimos cada modulo para programarlos a partes iguales y luego los revisabamos en conjunto en clase para modificar algun bug o hacer alguna correción, luego hay tambien una diferencia de commits ya que intentamos hacer pulls request pero al tener el trabajo ya avanzado no fuimos capaces de hacerlo y desde el ordenador de Sara hicimos commits de nuevo para intentar solucionarlo.
 
 <br>
 <br>

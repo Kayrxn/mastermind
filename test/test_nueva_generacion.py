@@ -1,6 +1,8 @@
+import pytest
 from logica.nueva_generacion import crear_nueva_generacion
 from logica.constantes import TAMANIO_POBLACION, COLORES
 
+@pytest.mark.nueva_generacion_colores
 def test_nueva_generacion_colores():
     padres = [
         ["rojo", "verde", "azul", "amarillo"],
